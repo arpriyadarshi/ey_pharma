@@ -3,7 +3,7 @@ from typing import List, Dict, Any
 from utils import make_json_serializable
 
 from openai import OpenAI
-from dotenv import load_dotenv
+import streamlit as st
 
 from schemas import StructuredQuery
 from prompts import (
@@ -13,10 +13,9 @@ from prompts import (
 )
 
 # Load environment variables
-load_dotenv()
-
-# Initialize OpenAI client
-client = OpenAI()
+client = OpenAI(
+    api_key=st.secrets["OPENAI_API_KEY"]
+)
 
 
 # -------------------------------------------------
